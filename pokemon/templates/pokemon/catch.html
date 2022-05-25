@@ -1,0 +1,24 @@
+{% extends 'pokemon/base.html' %}
+{% block content%}
+<div class="row">
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="poke">
+        <button type="submit"> search </button>    
+    </form>
+    {% if pokemon %}
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="{{ pokemon.img }}" alt="Card image cap">
+        <div class="card-body">
+            <p class="card-text">{{ pokemon.name }}</p>
+        </div>
+        <a href="{% url 'addtoteam' post_id=pokemon.id %}" class="btn btn-primary" > catch</a>
+    </div>
+    {% endif %}
+</div>
+
+
+
+
+
+{% endblock %}
